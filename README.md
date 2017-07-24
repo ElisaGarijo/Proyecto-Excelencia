@@ -10,3 +10,6 @@ Al final el entorno de desarrollo deberia ser el siguiente:
  2. un repositorio en Local GITHub , que es una copia del repositorio global que esta centralizado en el GIThub en la nube.
  3. el repsositorio GIThub en la nube que tiene las versiones consolidades de todos.
  4. Dentro del repositorio, el Master tiene las versiones de "producción" de todos los ficheros.  Para modificar un fichero os sugiero que creeis un "branch" donde incluyais aquello que quereis modificar, lo descargais a local, lo modefiqueis , probeis y cuando esteis seguros lo subais al master.  
+Otras link importante va a ser IBM DeveloperWorks : https://www.ibm.com/developerworks/ donde hay ejemplos y tutorials de todo lo que queremos hacer.
+
+Por ahora no vamos a conectar GitHub con IBM Bluemix, si lo necesitamos lo haremos en su momento 
