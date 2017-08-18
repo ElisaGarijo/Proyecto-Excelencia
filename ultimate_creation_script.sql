@@ -5,30 +5,30 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema proyectoexcelencia_db
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema proyectoexcelencia_db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `proyectoexcelencia_db` DEFAULT CHARACTER SET utf8 ;
+USE `proyectoexcelencia_db` ;
 
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`niveles_dificultad`
+-- Table `proyectoexcelencia_db`.`niveles_dificultad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`niveles_dificultad` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`niveles_dificultad` (
   `id_niveles_dificultad` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_niveles_dificultad`))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `mydb`.`niveles_interes`
+-- Table `proyectoexcelencia_db`.`niveles_interes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`niveles_interes` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`niveles_interes` (
   `id_niveles_interes` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_niveles_interes`))
@@ -36,9 +36,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
+-- Table `proyectoexcelencia_db`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`usuario` (
   `id_usuario` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `apellidos` VARCHAR(100) NULL DEFAULT NULL,
@@ -49,9 +49,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tipo_actividad`
+-- Table `proyectoexcelencia_db`.`tipo_actividad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tipo_actividad` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`tipo_actividad` (
   `id_tipo_actividad` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_tipo_actividad`))
@@ -59,9 +59,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`asignatura`
+-- Table `proyectoexcelencia_db`.`asignatura`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`asignatura` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`asignatura` (
   `id_asignatura` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `profesor` VARCHAR(145) NULL DEFAULT NULL,
@@ -71,9 +71,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`actividad`
+-- Table `proyectoexcelencia_db`.`actividad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`actividad` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`actividad` (
   `id_actividad` INT NOT NULL,
   `horas_en_bruto` DOUBLE NULL DEFAULT NULL,
   `horas_diarias` DOUBLE NULL DEFAULT NULL,
@@ -88,12 +88,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`actividad` (
   INDEX `fk_actividad_asignatura1_idx` (`asignatura` ASC),
   CONSTRAINT `fk_actividad_tipo_actividad1`
     FOREIGN KEY (`tipo_actividad`)
-    REFERENCES `mydb`.`tipo_actividad` (`id_tipo_actividad`)
+    REFERENCES `proyectoexcelencia_db`.`tipo_actividad` (`id_tipo_actividad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_actividad_asignatura1`
     FOREIGN KEY (`asignatura`)
-    REFERENCES `mydb`.`asignatura` (`id_asignatura`)
+    REFERENCES `proyectoexcelencia_db`.`asignatura` (`id_asignatura`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -102,16 +102,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`interes`
+-- Table `proyectoexcelencia_db`.`interes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`interes` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`interes` (
   `id_interes` INT NOT NULL,
   `nivel_interes` INT NOT NULL,
   PRIMARY KEY (`id_interes`),
   INDEX `fk_interes_niveles_interes1_idx` (`nivel_interes` ASC),
   CONSTRAINT `fk_interes_niveles_interes1`
     FOREIGN KEY (`nivel_interes`)
-    REFERENCES `mydb`.`niveles_interes` (`id_niveles_interes`)
+    REFERENCES `proyectoexcelencia_db`.`niveles_interes` (`id_niveles_interes`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -119,25 +119,25 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`dificultad`
+-- Table `proyectoexcelencia_db`.`dificultad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`dificultad` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`dificultad` (
   `id_dificultad` INT NOT NULL,
   `nivel_dificultad` INT NOT NULL,
   PRIMARY KEY (`id_dificultad`),
   INDEX `fk_dificultad_niveles_dificultad1_idx` (`nivel_dificultad` ASC),
   CONSTRAINT `fk_dificultad_niveles_dificultad1`
     FOREIGN KEY (`nivel_dificultad`)
-    REFERENCES `mydb`.`niveles_dificultad` (`id_niveles_dificultad`)
+    REFERENCES `proyectoexcelencia_db`.`niveles_dificultad` (`id_niveles_dificultad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`valoracion_objetiva`
+-- Table `proyectoexcelencia_db`.`valoracion_objetiva`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`valoracion_objetiva` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`valoracion_objetiva` (
   `id_valoracion_objetiva` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_valoracion_objetiva`))
@@ -145,9 +145,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`valoracion_subjetiva`
+-- Table `proyectoexcelencia_db`.`valoracion_subjetiva`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`valoracion_subjetiva` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`valoracion_subjetiva` (
   `id_valoracion_subjetiva` INT NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_valoracion_subjetiva`))
@@ -155,9 +155,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`semana_especial`
+-- Table `proyectoexcelencia_db`.`semana_especial`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`semana_especial` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`semana_especial` (
   `id_semana_especial` INT NOT NULL,
   `fecha_ini` DATE NULL DEFAULT NULL,
   `fecha_fin` DATE NULL DEFAULT NULL,
@@ -168,9 +168,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`instancia_actividad`
+-- Table `proyectoexcelencia_db`.`instancia_actividad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`instancia_actividad` (
+CREATE TABLE IF NOT EXISTS `proyectoexcelencia_db`.`instancia_actividad` (
   `id_instancia_actividad` INT NOT NULL,
   `fecha` DATE NULL DEFAULT NULL,
   `tiempo_horas` DOUBLE NULL DEFAULT NULL,
@@ -196,32 +196,32 @@ CREATE TABLE IF NOT EXISTS `mydb`.`instancia_actividad` (
   INDEX `fk_instancia_actividad_interes1_idx` (`interes` ASC),
   CONSTRAINT `fk_instancia_actividad_actividad1`
     FOREIGN KEY (`actividad`)
-    REFERENCES `mydb`.`actividad` (`id_actividad`)
+    REFERENCES `proyectoexcelencia_db`.`actividad` (`id_actividad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_instancia_actividad_valoracion_subjetiva1`
     FOREIGN KEY (`valoracion_subjetiva`)
-    REFERENCES `mydb`.`valoracion_subjetiva` (`id_valoracion_subjetiva`)
+    REFERENCES `proyectoexcelencia_db`.`valoracion_subjetiva` (`id_valoracion_subjetiva`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_instancia_actividad_valoracion_objetiva1`
     FOREIGN KEY (`valoracion_objetiva`)
-    REFERENCES `mydb`.`valoracion_objetiva` (`id_valoracion_objetiva`)
+    REFERENCES `proyectoexcelencia_db`.`valoracion_objetiva` (`id_valoracion_objetiva`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_instancia_actividad_usuario1`
     FOREIGN KEY (`usuario`)
-    REFERENCES `mydb`.`usuario` (`id_usuario`)
+    REFERENCES `proyectoexcelencia_db`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_instancia_actividad_dificultad1`
     FOREIGN KEY (`dificultad`)
-    REFERENCES `mydb`.`dificultad` (`id_dificultad`)
+    REFERENCES `proyectoexcelencia_db`.`dificultad` (`id_dificultad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_instancia_actividad_interes1`
     FOREIGN KEY (`interes`)
-    REFERENCES `mydb`.`interes` (`id_interes`)
+    REFERENCES `proyectoexcelencia_db`.`interes` (`id_interes`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
