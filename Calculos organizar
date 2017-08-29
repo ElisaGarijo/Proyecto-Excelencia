@@ -1,0 +1,17 @@
+if (msg.payload.context.apuntar_interes == "Poco"){
+  "Interes" = -0.1;
+  } else if (msg.payload.context.apuntar_interes == "Normal"){
+  "Interes" = 0
+  } else if (msg.payload.context.apuntar_interes == "Mucho"){
+  "Interes" = 0.1
+ 
+ if (msg.payload.context.apuntar_dificultad == "Facil"){
+  "Dificultad" = -0.1;
+  } else if (msg.payload.context.apuntar_dificultad == "Normal"){
+  "Dificultad" = 0;
+  } else if (msg.payload.context.apuntar_dificultad == "Dificil"){
+  "Dificultad" = 0.1;
+  
+ var Semanas = msg.payload.context.number
+ var Constante = 0.4
+ 
